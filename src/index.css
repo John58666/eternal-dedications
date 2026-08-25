@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Pinyon+Script&family=Inter:wght@400;500;600&family=Outfit:wght@300;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Los colores y fuentes viven UNICAMENTE en tailwind.config.js (fuente unica de verdad) */
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    /* Cielo polvo → blush: puente frío-cálido hacia las tarjetas del regalo */
+    background-image: linear-gradient(180deg, #EFF6FF 0%, #FDF2F8 100%);
+    color: #1E293B;
+    overflow-x: hidden;
+  }
+
+  /* Halos mesh fijos (tendencia 2026): celeste arriba-izq, rosa abajo-der */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(640px circle at 12% 8%, rgba(191, 219, 254, 0.55), transparent 62%),
+      radial-gradient(720px circle at 88% 94%, rgba(251, 207, 232, 0.5), transparent 62%);
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* ── Keyframes compartidos por los componentes de decoración ── */
+
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0.8; }
+  100% { transform: translateY(110vh) rotate(720deg) translateX(30px); opacity: 0; }
+}
+
+@keyframes floatHeart {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes flip {
+  0% { transform: rotateX(0deg); }
+  50% { transform: rotateX(180deg); }
+  100% { transform: rotateX(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Utilidades de animación ── */
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Escalonamiento de hijos (30-80ms por hijo según component-forge) */
+.stagger-1 > *:nth-child(1) { animation-delay: 0s; }
+.stagger-1 > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-1 > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger-1 > *:nth-child(4) { animation-delay: 0.3s; }
+.stagger-1 > *:nth-child(5) { animation-delay: 0.4s; }
+
+/* ── Superficie de vidrio reutilizable (formulario y tarjetas de pasos) ── */
+@layer components {
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-xl border border-white/70 ring-1 ring-white/60;
+  }
+}
+
+/* ── Flor que florece y se mece (BloomingFlower) ── */
+@keyframes bloom-petal {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@keyframes flower-sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+/* ── Shimmer premium: banda de luz que barre el título de marca ── */
+@keyframes shimmer-slide {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* ── Lluvia de encantos dentro del área del header (FallingCharms) ── */
+@keyframes charm-drift {
+  0% { transform: translateY(-14px) rotate(-8deg); opacity: 0; }
+  10% { opacity: 0.9; }
+  80% { opacity: 0.9; }
+  100% { transform: translateY(215px) rotate(20deg); opacity: 0; }
+}
+
+/* ── Latido del corazón de marca (BrandMasthead) ── */
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.18); }
+  40% { transform: scale(1); }
+}
+
+/* ── Flourish de marca: trazo que se dibuja solo al cargar ── */
+@keyframes flourish-draw {
+  from { stroke-dashoffset: 400; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Haz de escaneo del QR (QrRevealCard) ── */
+@keyframes qr-scan {
+  0%, 100% { top: 4%; opacity: 0; }
+  10% { opacity: 0.95; }
+  50% { top: 82%; }
+  60% { opacity: 0.95; }
+  72% { opacity: 0; }
+}
+
+/* ── Accesibilidad: respetar preferencia de movimiento reducido ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
