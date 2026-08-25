@@ -99,4 +99,4 @@ PhoneMockup3D   → interacción: tilt (mouse/touch), presión, confeti, estado
 
 ## 7. Pendientes técnicos
 
-Ver sección [Roadmap](../README.md#️-roadmap) del README.
+Ver la sección **Roadmap** del [README](../README.md).
