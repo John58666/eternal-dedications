@@ -29,7 +29,7 @@ export const PhoneFrame: React.FC<PhoneFrameProps> = ({
     `${edgeX * 4}px ${edgeY * 4}px 12px rgba(190, 24, 93, 0.2)`,
     `inset ${edgeX * 2}px ${edgeY * 2}px 3px rgba(255, 255, 255, 0.65)`,
     `inset ${-edgeX * 2}px ${-edgeY * 2}px 3px rgba(159, 18, 57, 0.4)`,
-  ].join(', '); 
+  ].join(', ');
 
   return (
     <div

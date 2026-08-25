@@ -29,7 +29,7 @@ export const HeroSection: React.FC = () => {
             <span className="text-esmeralda">19 de Septiembre</span>?
           </h1>
 
-          <p className="font-elegant font-semibold text-lg lg:text-xl italic text-grafito leading-relaxed animate-fade-in-up">
+          <p className="font-elegant text-lg lg:text-xl italic text-grafito leading-relaxed animate-fade-in-up">
             El regalo que ella va a presumir.
           </p>
 

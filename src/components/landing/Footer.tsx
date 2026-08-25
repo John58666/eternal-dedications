@@ -9,7 +9,8 @@ const GUARANTEES = [
 
 /**
  * Pie de página.
- * Sin animaciones: el contenido legal debe ser siempre visible.
+ * Sin animaciones: el contenido legal debe ser siempre visible
+ * (el bloque inferior quedó invisible en móvil con animate-*).
  */
 export const Footer: React.FC = () => {
   return (

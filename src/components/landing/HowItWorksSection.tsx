@@ -45,7 +45,7 @@ export const HowItWorksSection: React.FC = () => {
           <h2 className="font-heading font-black text-3xl lg:text-4xl text-zafiro animate-fade-in-up">
             🔓 El código secreto de ustedes
           </h2>
-          <p className="font-elegant font-semibold mx-auto max-w-2xl text-lg italic text-grafito animate-fade-in-up">
+          <p className="font-elegant mx-auto max-w-2xl text-lg italic text-grafito animate-fade-in-up">
             Un QR físico que abre una experiencia hecha solo para ella.
           </p>
         </div>
